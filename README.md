@@ -11,21 +11,21 @@ Feel free to change anything on the script :)
 
 #code:
 
-#!/bin/bash
+        #!/bin/bash
 
-theme=$2
+        theme=$2
 
-if [ "$1" = "set" ]; then
+        if [ "$1" = "set" ]; then
 
-        cp "$HOME/themes/$theme/polybar" "$HOME/.config/polybar/config.ini"
+                cp "$HOME/themes/$theme/polybar" "$HOME/.config/polybar/config.ini"
 
-        cp "$HOME/themes/$theme/i3" "$HOME/.config/i3/config"
+                cp "$HOME/themes/$theme/i3" "$HOME/.config/i3/config"
 
-elif [ "$1" = "save" ]; then
+        elif [ "$1" = "save" ]; then
 
-        mkdir "$HOME/themes/$theme" 
+                mkdir "$HOME/themes/$theme" 
 
-        cp  "$HOME/.config/polybar/config.ini" "$HOME/themes/$theme/polybar"
+                cp  "$HOME/.config/polybar/config.ini" "$HOME/themes/$theme/polybar"
 
-        cp  "$HOME/.config/i3/config" "$HOME/themes/$theme/i3"
-fi
+                cp  "$HOME/.config/i3/config" "$HOME/themes/$theme/i3"
+        fi
