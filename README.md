@@ -9,7 +9,7 @@ Feel free to change anything on the script :)
 
 
 
-#code:
+# code:
 
         #!/bin/bash
         theme=$2
