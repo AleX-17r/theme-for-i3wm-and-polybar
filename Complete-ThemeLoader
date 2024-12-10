@@ -1,0 +1,55 @@
+#!/bin/bash
+
+#   __ ___________.__                          .____                     .___             __
+#  / / \__    ___/|  |__   ____   _____   ____ |    |    _________     __| _/___________  \ \
+# / /    |    |   |  |  \_/ __ \ /     \_/ __ \|    |   /  _ \__  \   / __ |/ __ \_  __ \  \ \
+# \ \    |    |   |   Y  \  ___/|  Y Y  \  ___/|    |__(  <_> ) __ \_/ /_/ \  ___/|  | \/  / /
+#  \_\   |____|   |___|  /\___  >__|_|  /\___  >_______ \____(____  /\____ |\___  >__|    /_/
+#                      \/     \/      \/     \/        \/         \/      \/    \/
+#
+#--feel free to visit my configs on GitHub: https://github.com/AleX-17r/my-system-config
+
+theme=$2
+
+if [ "$1" = "set" ]; then
+
+#polybar
+        cp "$HOME/themes/$theme/polybar" "$HOME/.config/polybar/config.ini"
+#i3-wm
+        cp "$HOME/themes/$theme/i3" "$HOME/.config/i3/config"
+#lock screen (https://github.com/Raymo111/i3lock-color)
+        cp  "$HOME/themes/$theme/lock" "$HOME/.config/scripts/lock"
+#alacritty terminal
+	cp "$HOME/themes/$theme/alacritty" "$HOME/.config/alacritty.toml"
+#if you don't want more than 1 polybar
+	killall polybar
+	i3-msg restart
+
+elif [ "$1" = "save" ]; then
+
+        mkdir "$HOME/themes/$theme"
+#polybar
+        cp  "$HOME/.config/polybar/config.ini" "$HOME/themes/$theme/polybar"
+#i3-wm
+        cp  "$HOME/.config/i3/config" "$HOME/themes/$theme/i3"
+#lock screen
+        cp  "$HOME/.config/scripts/lock" "$HOME/themes/$theme/lock"
+#alacritty terminal
+	cp "$HOME/.config/alacritty.toml" "$HOME/themes/$theme/alacritty"
+
+fi
+
+
+#for showing your themes in ~/themes
+if [ "$1" = "show" ]; then
+	echo Your saved themes:
+	ls ~/themes #(change this directory if you're using another one)
+
+elif [ "$1" = "help" ]; then
+	echo 'This is a simple script for changing and saving themes in i3wm'
+	echo 'exec this script continued by:'
+	echo '	set   --to set a saved theme'
+	echo '	save  --to save a created theme'
+	echo '	show  --shows you saved themes'
+	echo '	help  --shows this'
+fi
