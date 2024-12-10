@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#   __ ___________.__                          .____                     .___             __
+#  / / \__    ___/|  |__   ____   _____   ____ |    |    _________     __| _/___________  \ \
+# / /    |    |   |  |  \_/ __ \ /     \_/ __ \|    |   /  _ \__  \   / __ |/ __ \_  __ \  \ \
+# \ \    |    |   |   Y  \  ___/|  Y Y  \  ___/|    |__(  <_> ) __ \_/ /_/ \  ___/|  | \/  / /
+#  \_\   |____|   |___|  /\___  >__|_|  /\___  >_______ \____(____  /\____ |\___  >__|    /_/
+#    _____            \/  ___.\/     \/     \/        \/         \/      \/    \/                                              
+#  /  |  |  __  _  __ ____\_ |__ ___________     ____   ____  
+# /   |  |_ \ \/ \/ // __ \| __ \\____ \__  \   / ___\_/ __ \ 
+#/    ^   /  \     /\  ___/| \_\ \  |_> > __ \_/ /_/  >  ___/ 
+#\____   |    \/\_/  \___  >___  /   __(____  /\___  / \___  >
+#     |__|               \/    \/|__|       \//_____/      \/
+#--This is the same I use for my system but adapted for changing easier the css styles for webpages
+#--This can help you change fast from themes on your webpage
+#--(Yes, I know is a dumb thing, but it exists).
+#--feel free to visit my configs on GitHub: https://github.com/AleX-17r/my-system-config
+#-- ! Make sure you change the directory to the yours one !
+theme=$2
+# SET -> This copy a saved theme to the "actual.css" file
+if [ "$1" = "set" ]; then
+        cp "$HOME/htmls/themes/$theme" "$HOME/htmls/actual.css"
+# SAVE -> This copy the "actual.css" to a file in "themes" directory 
+elif [ "$1" = "save" ]; then
+
+       	cp "$HOME/htmls/actual.css" "$HOME/htmls/themes/$theme"
+fi
+
+#for showing your themes in ~/htmls/themes
+if [ "$1" = "show" ]; then
+	echo Your saved themes:
+	ls ~/htmls/themes #(change this directory if you're using another one)
+
+elif [ "$1" = "help" ]; then
+	echo 'This is a simple script for changing and saving themes in i3wm'
+	echo 'exec this script continued by:'
+	echo '	set   --to set a saved theme'
+	echo '	save  --to save a created theme'
+	echo '	show  --shows you saved themes'
+	echo '	help  --shows this'
+fi
